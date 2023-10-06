@@ -3,11 +3,19 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
-  const [favorite, setFavorite] = useState(false)
+function PhotoFavButton(props) {
+  const {photo, favoritePhotos, setFavoritePhotos} = props
+
+  const isPhotoFavorited = favoritePhotos.includes(photo.id)
+  const [favorite, setFavorite] = useState(isPhotoFavorited) //Local state for setting the icon to favorite
 
   const handleClick = () => { 
-    setFavorite(prevFavorite => !prevFavorite) //Takes the current value of favorite then reverses it from true to false or vice versa
+    if (favorite) {
+      setFavoritePhotos(favoritePhotos => favoritePhotos.filter(id => id !== photo.id))
+    } else {
+      setFavoritePhotos(favoritePhotos => [...favoritePhotos, photo.id])
+    }
+    setFavorite(favorite => !favorite) //Takes the current value of favorite then reverses it from true to false or vice versa
   }
 
   return (
