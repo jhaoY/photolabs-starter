@@ -13,6 +13,7 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState(null)
+  const [favoritePhotos, setFavoritePhotos] = useState([])
 
   const handlePhotoClick = photo => {
     setIsModalOpen(true)
@@ -24,9 +25,18 @@ const App = () => {
       <HomeRoute
         topics={topics}
         photos={photos}
+        favoritePhotos={favoritePhotos}
+        setFavoritePhotos={setFavoritePhotos}
         handlePhotoClick={handlePhotoClick}
       />
-      {isModalOpen && <PhotoDetailsModal setIsModalOpen={setIsModalOpen} selectedPhoto={selectedPhoto}/>}
+      {isModalOpen &&
+        <PhotoDetailsModal
+          setIsModalOpen={setIsModalOpen}
+          photo={selectedPhoto}
+          favoritePhotos={favoritePhotos}
+          setFavoritePhotos={setFavoritePhotos}
+          handlePhotoClick={handlePhotoClick}
+        />}
     </div>
   );
 };

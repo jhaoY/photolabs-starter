@@ -7,8 +7,7 @@ import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const { photos, topics, handlePhotoClick } = props
-  const [favoritePhotos, setFavoritePhotos] = useState([])
+  const { photos, topics, handlePhotoClick, favoritePhotos, setFavoritePhotos } = props
 
   return (
     <div className="home-route">
