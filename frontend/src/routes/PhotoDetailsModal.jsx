@@ -29,18 +29,17 @@ const PhotoDetailsModal = (props) => {
             <span className='photo-details-modal__photographer-location'>{photo.location.city}, {photo.location.country}</span>
           </p>
         </div>
-        <p>
-          Similar Photos
-        </p>
-        <div className='photo-details-modal__images'>
-          <PhotoList
-            photos={Object.values(photo.similar_photos)}
-            favoritePhotos={favoritePhotos}
-            setFavoritePhotos={setFavoritePhotos}
-          />
-        </div>
       </header>
-
+      <p>
+        Similar Photos
+      </p>
+      <div className='photo-details-modal__images'>
+        <PhotoList
+          photos={Object.values(photo.similar_photos)}
+          favoritePhotos={favoritePhotos}
+          setFavoritePhotos={setFavoritePhotos}
+        />
+      </div>
     </div>
   )
 };
