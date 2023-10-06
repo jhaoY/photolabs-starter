@@ -26,7 +26,7 @@ const App = () => {
         photos={photos}
         handlePhotoClick={handlePhotoClick}
       />
-      {isModalOpen && <PhotoDetailsModal />}
+      {isModalOpen && <PhotoDetailsModal setIsModalOpen={setIsModalOpen}/>}
     </div>
   );
 };
