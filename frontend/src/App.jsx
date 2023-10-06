@@ -26,7 +26,7 @@ const App = () => {
         photos={photos}
         handlePhotoClick={handlePhotoClick}
       />
-      {isModalOpen && <PhotoDetailsModal setIsModalOpen={setIsModalOpen}/>}
+      {isModalOpen && <PhotoDetailsModal setIsModalOpen={setIsModalOpen} selectedPhoto={selectedPhoto}/>}
     </div>
   );
 };
