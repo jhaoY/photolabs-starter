@@ -15,9 +15,14 @@ const App = () => {
     username: "Joe Example",
     profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
   };
+
+  const photos = new Array(3).fill(sampleDataForPhotoListItem);
+
   return (
     <div className="App">
-      <PhotoListItem sampleDataForPhotoListItem={sampleDataForPhotoListItem}/>
+      {photos.map((photo, index) => (
+        <PhotoListItem key={index} sampleDataForPhotoListItem={photo}/>
+      ))}
     </div>
   );
 };
