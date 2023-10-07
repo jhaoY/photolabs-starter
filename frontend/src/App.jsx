@@ -20,6 +20,11 @@ const App = () => {
     setSelectedPhoto(photo)
   }
 
+  const onClosePhotoDetailsModal = () => {
+    setIsModalOpen(false)
+    setSelectedPhoto(null)
+  }
+
   return (
     <div className="App">
       <HomeRoute
@@ -31,10 +36,10 @@ const App = () => {
       />
       {isModalOpen &&
         <PhotoDetailsModal
-          setIsModalOpen={setIsModalOpen}
-          photo={selectedPhoto}
-          favoritePhotos={favoritePhotos}
-          setFavoritePhotos={setFavoritePhotos}
+        photo={selectedPhoto}
+        favoritePhotos={favoritePhotos}
+        setFavoritePhotos={setFavoritePhotos}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />}
     </div>
   );
