@@ -8,9 +8,8 @@ function PhotoFavButton(props) {
 
   const isPhotoFavorited = favoritePhotos.includes(photo.id)
 
-
-  const updateToFavPhotoIds = () => { 
-    if (isPhotoFavorited) {
+  const updateToFavPhotoIds = (isPhotoFavorited) => { 
+    if (isPhotoFavorited === true) {
       setFavoritePhotos(favoritePhotos => favoritePhotos.filter(id => id !== photo.id))
     } else {
       setFavoritePhotos(favoritePhotos => [...favoritePhotos, photo.id])
@@ -18,7 +17,7 @@ function PhotoFavButton(props) {
   }
 
   return (
-    <div className="photo-list__fav-icon" onClick={updateToFavPhotoIds}>
+    <div className="photo-list__fav-icon" onClick={() => updateToFavPhotoIds(isPhotoFavorited)}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={isPhotoFavorited}/>
       </div>
