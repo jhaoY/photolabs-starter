@@ -8,7 +8,6 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
   const { setIsModalOpen, photo, favoritePhotos, setFavoritePhotos } = props
-  console.log(Object.values(photo.similar_photos))
 
   return (
     <div className="photo-details-modal">
