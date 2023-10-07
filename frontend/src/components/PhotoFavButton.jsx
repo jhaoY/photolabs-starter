@@ -7,26 +7,20 @@ function PhotoFavButton(props) {
   const {photo, favoritePhotos, setFavoritePhotos} = props
 
   const isPhotoFavorited = favoritePhotos.includes(photo.id)
-  const [favorite, setFavorite] = useState(isPhotoFavorited) //Local state for setting the icon to favorite
 
-  useEffect(() => {
-    const isFavorited = favoritePhotos.includes(photo.id);
-    setFavorite(isFavorited);
-  }, [favoritePhotos, photo.id]);
 
-  const handleLikeClick = () => { 
-    if (favorite) {
+  const updateToFavPhotoIds = () => { 
+    if (isPhotoFavorited) {
       setFavoritePhotos(favoritePhotos => favoritePhotos.filter(id => id !== photo.id))
     } else {
       setFavoritePhotos(favoritePhotos => [...favoritePhotos, photo.id])
     }
-    setFavorite(favorite => !favorite) //Takes the current value of favorite then reverses it from true to false or vice versa
   }
 
   return (
-    <div className="photo-list__fav-icon" onClick={handleLikeClick}>
+    <div className="photo-list__fav-icon" onClick={updateToFavPhotoIds}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={favorite}/>
+        <FavIcon selected={isPhotoFavorited}/>
       </div>
     </div>
   );
