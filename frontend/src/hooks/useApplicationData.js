@@ -6,7 +6,6 @@ function useApplicationData() {
   const [selectedPhoto, setSelectedPhoto] = useState(null)
   const [favoritePhotos, setFavoritePhotos] = useState([])
 
-
   const updateToFavPhotoIds = (photo) => { 
     const isPhotoFavorited = favoritePhotos.includes(photo.id);
     if (isPhotoFavorited) {

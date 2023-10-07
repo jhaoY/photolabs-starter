@@ -7,7 +7,7 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
-  const { photo, favoritePhotos, setFavoritePhotos, onClosePhotoDetailsModal } = props
+  const { photo, favoritePhotos, onClosePhotoDetailsModal, updateToFavPhotoIds } = props
 
   return (
     <div className="photo-details-modal">
@@ -18,7 +18,7 @@ const PhotoDetailsModal = (props) => {
         <PhotoFavButton
           photo={photo}
           favoritePhotos={favoritePhotos}
-          setFavoritePhotos={setFavoritePhotos}
+          updateToFavPhotoIds={updateToFavPhotoIds}
         />
         <img className='photo-details-modal__image' src={photo.urls.full} alt="" />
         <header className='photo-details-modal__header'>
@@ -37,8 +37,7 @@ const PhotoDetailsModal = (props) => {
         <PhotoList
           photos={Object.values(photo.similar_photos)}
           favoritePhotos={favoritePhotos}
-          setFavoritePhotos={setFavoritePhotos}
-        />
+          updateToFavPhotoIds={updateToFavPhotoIds}        />
     </div>
   )
 };
