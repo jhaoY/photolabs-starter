@@ -35,7 +35,6 @@ const App = () => {
           photo={selectedPhoto}
           favoritePhotos={favoritePhotos}
           setFavoritePhotos={setFavoritePhotos}
-          handlePhotoClick={handlePhotoClick}
         />}
     </div>
   );
