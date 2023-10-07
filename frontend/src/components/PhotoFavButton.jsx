@@ -6,13 +6,13 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
   const {photo, favoritePhotos, setFavoritePhotos} = props
 
+  const isPhotoFavorited = favoritePhotos.includes(photo.id)
+  const [favorite, setFavorite] = useState(isPhotoFavorited) //Local state for setting the icon to favorite
+
   useEffect(() => {
     const isFavorited = favoritePhotos.includes(photo.id);
     setFavorite(isFavorited);
   }, [favoritePhotos, photo.id]);
-
-  const isPhotoFavorited = favoritePhotos.includes(photo.id)
-  const [favorite, setFavorite] = useState(isPhotoFavorited) //Local state for setting the icon to favorite
 
   const handleLikeClick = () => { 
     if (favorite) {
