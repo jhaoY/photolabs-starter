@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
@@ -6,10 +6,15 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
   const {photo, favoritePhotos, setFavoritePhotos} = props
 
+  useEffect(() => {
+    const isFavorited = favoritePhotos.includes(photo.id);
+    setFavorite(isFavorited);
+  }, [favoritePhotos, photo.id]);
+
   const isPhotoFavorited = favoritePhotos.includes(photo.id)
   const [favorite, setFavorite] = useState(isPhotoFavorited) //Local state for setting the icon to favorite
 
-  const handleClick = () => { 
+  const handleLikeClick = () => { 
     if (favorite) {
       setFavoritePhotos(favoritePhotos => favoritePhotos.filter(id => id !== photo.id))
     } else {
@@ -19,7 +24,7 @@ function PhotoFavButton(props) {
   }
 
   return (
-    <div className="photo-list__fav-icon" onClick={handleClick}>
+    <div className="photo-list__fav-icon" onClick={handleLikeClick}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={favorite}/>
       </div>
