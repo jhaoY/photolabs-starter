@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import useApplicationData from 'hooks/useApplicationData';
 
 import HomeRoute from 'routes/HomeRoute';
@@ -10,7 +9,6 @@ import photos from 'mocks/photos';
 
 import './App.scss';
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
   const {
     state,
@@ -19,21 +17,25 @@ const App = () => {
     onClosePhotoDetailsModal,
   } = useApplicationData();
 
-  const { isModalOpen, selectedPhoto, favoritePhotos } = state
+  const { 
+    isModalOpen, 
+    selectedPhoto, 
+    favoritePhotos 
+  } = state
 
   return (
     <div className="App">
       <HomeRoute
         topics={topics}
         photos={photos}
-        favoritePhotos={state.favoritePhotos}
+        favoritePhotos={favoritePhotos}
         setPhotoSelected={setPhotoSelected}
         updateToFavPhotoIds={updateToFavPhotoIds}
       />
       {isModalOpen &&
         <PhotoDetailsModal
         photo={selectedPhoto}
-        favoritePhotos={state.favoritePhotos}
+        favoritePhotos={favoritePhotos}
         updateToFavPhotoIds={updateToFavPhotoIds}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />}
