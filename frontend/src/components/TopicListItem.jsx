@@ -3,11 +3,11 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
-  const {topic} = props
+  const { topic, setTopicSelected } = props
 
   return (
     <div className="topic-list__item">
-      <span>{topic.title}</span>
+      <span onClick={() => setTopicSelected(topic)}>{topic.title}</span>
     </div>
   );
 };

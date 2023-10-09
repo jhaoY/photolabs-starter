@@ -7,13 +7,14 @@ import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const { photos, topics, setPhotoSelected, favoritePhotos, updateToFavPhotoIds } = props
+  const { photos, topics, setPhotoSelected, favoritePhotos, updateToFavPhotoIds, setTopicSelected } = props
 
   return (
     <div className="home-route">
       <TopNavigationBar
         topics={topics}
         favoritePhotos={favoritePhotos}
+        setTopicSelected={setTopicSelected}
       />
       <PhotoList
         photos={photos}
