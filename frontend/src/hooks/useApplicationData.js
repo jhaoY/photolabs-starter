@@ -1,4 +1,4 @@
-import { useReducer, useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 
 const initialState = {
   isModalOpen: false,
@@ -44,10 +44,11 @@ function reducer(state, action) {
   }
 }
 
+// -----------------------CUSTOM HOOK-------------------------------------------------------------------
 function useApplicationData() {
-
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  // Returns photo data from backend
   useEffect(() => {
     fetch('/api/photos')
       .then(res => res.json())
@@ -57,6 +58,7 @@ function useApplicationData() {
       })
   }, [])
 
+  // Return topic data from backend
   useEffect(() => {
     fetch('/api/topics')
       .then(res => res.json())
@@ -66,14 +68,23 @@ function useApplicationData() {
       })
   }, [])
 
+  // Returns new photo data based on selected topic from backend
   useEffect(() => {
     if (state.selectedTopic) {
       fetch(`/api/topics/photos/${state.selectedTopic}`)
         .then(res => res.json())
         .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }))
+    } else {
+      fetch('/api/photos')
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(err => {
+        console.error('Error fetching photos', err)
+      })
     }
   }, [state.selectedTopic])
 
+  // Adds/removes a photoId from the favoritePhotos state
   const updateToFavPhotoIds = (photo) => {
     if (state.favoritePhotos.includes(photo.id)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photo.id })
@@ -82,15 +93,22 @@ function useApplicationData() {
     }
   }
 
+  // Sets the topic state
   const setTopicSelected = topic => {
     dispatch({ type: ACTIONS.SELECT_TOPIC, payload: topic.id })
   }
 
+  const resetTopicSelected = () => {
+    dispatch({ type: ACTIONS.SELECT_TOPIC, payload: null })
+  }
+
+  // Sets the photo state
   const setPhotoSelected = photo => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: true })
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   }
 
+  // Sets the modal state
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: false });
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: null });
@@ -108,6 +126,7 @@ function useApplicationData() {
     updateToFavPhotoIds,
     setPhotoSelected,
     setTopicSelected,
+    resetTopicSelected,
     onClosePhotoDetailsModal
   }
 }

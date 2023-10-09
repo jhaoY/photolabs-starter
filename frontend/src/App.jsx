@@ -12,7 +12,8 @@ const App = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
-    setTopicSelected
+    setTopicSelected,
+    resetTopicSelected
   } = useApplicationData();
 
   const { 
@@ -32,6 +33,7 @@ const App = () => {
         setPhotoSelected={setPhotoSelected}
         updateToFavPhotoIds={updateToFavPhotoIds}
         setTopicSelected={setTopicSelected}
+        resetTopicSelected={resetTopicSelected}
       />
       {isModalOpen &&
         <PhotoDetailsModal
