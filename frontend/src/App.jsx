@@ -4,9 +4,6 @@ import useApplicationData from 'hooks/useApplicationData';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
-import topics from 'mocks/topics';
-import photos from 'mocks/photos';
-
 import './App.scss';
 
 const App = () => {
@@ -20,14 +17,16 @@ const App = () => {
   const { 
     isModalOpen, 
     selectedPhoto, 
-    favoritePhotos 
+    favoritePhotos,
+    photoData,
+    topicData
   } = state
 
   return (
     <div className="App">
       <HomeRoute
-        topics={topics}
-        photos={photos}
+        topics={topicData}
+        photos={photoData}
         favoritePhotos={favoritePhotos}
         setPhotoSelected={setPhotoSelected}
         updateToFavPhotoIds={updateToFavPhotoIds}
