@@ -75,3 +75,9 @@
   font-size: 12px;
   margin-left: 8px;
 }
+
+.photo-details-modal__related-images .photo-list__image {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+}
