@@ -16,9 +16,9 @@ const App = () => {
     resetTopicSelected
   } = useApplicationData();
 
-  const { 
-    isModalOpen, 
-    selectedPhoto, 
+  const {
+    isModalOpen,
+    selectedPhoto,
     favoritePhotos,
     photoData,
     topicData
@@ -37,10 +37,10 @@ const App = () => {
       />
       {isModalOpen &&
         <PhotoDetailsModal
-        photo={selectedPhoto}
-        favoritePhotos={favoritePhotos}
-        updateToFavPhotoIds={updateToFavPhotoIds}
-        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+          photo={selectedPhoto}
+          favoritePhotos={favoritePhotos}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />}
     </div>
   );
